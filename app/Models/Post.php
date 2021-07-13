@@ -45,7 +45,7 @@ class Post extends Model
 
     public function scopePublished($query)
     {
-        if (!app()->environment('production')) {
+        if (! app()->environment('production')) {
             return $query->orderBy('published_at', 'DESC');
         }
 
@@ -69,6 +69,7 @@ class Post extends Model
     {
         return false;
     }
+
     public static function booted(): void
     {
         static::creating(function (Post $post) {
